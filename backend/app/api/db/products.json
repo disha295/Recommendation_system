@@ -1,0 +1,28 @@
+[
+  {
+    "id": 1,
+    "name": "Relaxation Tea",
+    "type": "beverage",
+    "description": "A soothing herbal tea blend designed for relaxation and stress relief.",
+    "effects": ["relaxation", "stress relief"],
+    "ingredients": ["Chamomile", "Lavender"],
+    "price": 12.99,
+    "sales_data": {
+      "units_sold": 120,
+      "last_month_revenue": 1558.8
+    }
+  },
+  {
+    "id": 2,
+    "name": "Smartphone XYZ",
+    "type": "gadget",
+    "description": "Latest model with powerful features and an amazing camera.",
+    "effects": ["tech", "smartphone"],
+    "ingredients": ["Tech", "Display", "Camera"],
+    "price": 799.99,
+    "sales_data": {
+      "units_sold": 300,
+      "last_month_revenue": 239997.0
+    }
+  }
+]
