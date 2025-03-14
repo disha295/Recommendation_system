@@ -1,3 +1,5 @@
+#AI-Powered Product Recommendation System with RAG
+
 ### How to Run the Prototype
 
 1. **Backend Setup**:
