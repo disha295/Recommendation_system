@@ -1,85 +1,52 @@
 import React, { useState } from "react";
+import "./AskAnything.css"; // Import CSS file for styling
 
 const AskAnything = ({ onSubmit }) => {
   const [query, setQuery] = useState("");
 
-  const templateQueries = [
-    "Best tea for relaxation?",
-    "Snacks for movie night?",
-    "Gifts for coffee lovers?",
-    "Energy drinks under $10?",
-  ];
+  const templateQueries = ["Best tea for relaxation?", "Energized drinks"];
 
-  const handleSubmit = () => {
+  const handleTemplateClick = (template) => {
+    setQuery(template); // Update the query state
+    onSubmit(template); // Automatically submit the query
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
     if (query.trim()) {
-      onSubmit(query); // Pass query to parent component
+      onSubmit(query);
     } else {
       alert("Please type in a query.");
     }
   };
 
   return (
-    <div style={{ fontFamily: "Arial, sans-serif", padding: "20px" }}>
-      <h1 style={{ textAlign: "center" }}>What can I help you with?</h1>
+    <div className="ask-container">
+      {/* Title */}
+      <h1 className="ask-title">What can I help you with?</h1>
 
-      <div
-        style={{
-          display: "flex",
-          justifyContent: "center",
-          alignItems: "center",
-          margin: "20px 0",
-        }}
-      >
-        <input
-          type="text"
-          value={query}
-          onChange={(e) => setQuery(e.target.value)}
-          placeholder="Ask anything..."
-          style={{
-            width: "60%",
-            padding: "10px",
-            fontSize: "16px",
-            border: "1px solid #ccc",
-            borderRadius: "5px",
-          }}
-        />
-        <button
-          onClick={handleSubmit}
-          style={{
-            marginLeft: "10px",
-            width: "50px",
-            height: "50px",
-            borderRadius: "50%",
-            background: "#007BFF",
-            color: "#fff",
-            border: "none",
-            cursor: "pointer",
-          }}
-        >
-          ➡️
-        </button>
-      </div>
+      {/* Search Bar */}
+      <form onSubmit={handleSubmit} className="search-form">
+        <div className="search-bar">
+          <i className="search-icon">🔍</i> {/* Icon inside input field */}
+          <input
+            type="text"
+            value={query}
+            onChange={(e) => setQuery(e.target.value)}
+            placeholder="Ask me anything..."
+            className="search-input"
+          />
+        </div>
+      </form>
 
-      <h3 style={{ textAlign: "center" }}>Template Queries</h3>
-      <div
-        style={{
-          display: "flex",
-          justifyContent: "center",
-          gap: "10px",
-          flexWrap: "wrap",
-        }}
-      >
+      {/* Template Queries */}
+      <h3 className="template-title">Template Queries</h3>
+      <div className="template-queries">
         {templateQueries.map((template, index) => (
           <button
             key={index}
-            onClick={() => setQuery(template)}
-            style={{
-              padding: "10px 15px",
-              background: "#f1f1f1",
-              border: "1px solid #ccc",
-              borderRadius: "5px",
-              cursor: "pointer",
-            }}
+            onClick={() => handleTemplateClick(template)}
+            className="template-button"
           >
             {template}
           </button>

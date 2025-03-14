@@ -1,0 +1,101 @@
+/* Container for the component */
+.ask-container {
+  font-family: "Poppins", sans-serif;
+  text-align: center;
+  padding: 20px;
+  min-height: 100vh;
+  background: linear-gradient(
+    to bottom,
+    #cbdefa,
+    #e1ecf4
+  ); /* Subtle gradient */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Title Styling */
+.ask-title {
+  font-size: 2.5rem;
+  margin-bottom: 20px;
+  color: #333;
+}
+
+/* Search Form */
+.search-form {
+  width: 100%;
+  max-width: 600px;
+  margin-bottom: 30px;
+}
+
+/* Search Bar */
+.search-bar {
+  position: relative;
+  display: flex;
+  align-items: center;
+  background: #ffffff;
+  border: 2px solid #ccc;
+  border-radius: 30px;
+  padding: 10px 15px;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.search-bar:hover,
+.search-bar:focus-within {
+  border-color: #007bff;
+  box-shadow: 0 0 8px rgba(0, 123, 255, 0.3);
+}
+
+/* Search Icon Inside Input */
+.search-icon {
+  font-size: 1.2rem;
+  color: #888;
+  margin-right: 10px;
+}
+
+/* Search Input */
+.search-input {
+  flex: 1;
+  border: none;
+  outline: none;
+  font-size: 1rem;
+  padding: 10px 0;
+  color: #333;
+}
+
+.search-input::placeholder {
+  color: #aaa;
+  font-style: italic;
+}
+
+/* Template Queries Section */
+.template-title {
+  font-size: 1.5rem;
+  margin-bottom: 15px;
+  color: #333;
+}
+
+.template-queries {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 15px;
+  max-width: 600px;
+}
+
+.template-button {
+  padding: 10px 20px;
+  background: #f8f9fa;
+  border: 2px solid #ddd;
+  border-radius: 20px;
+  color: #333;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background 0.3s ease, transform 0.2s;
+}
+
+.template-button:hover {
+  background: #e2e6ea;
+  transform: translateY(-2px); /* Lift effect */
+}

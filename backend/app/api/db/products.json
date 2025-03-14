@@ -2,27 +2,51 @@
   {
     "id": 1,
     "name": "Relaxation Tea",
-    "type": "beverage",
     "description": "A soothing herbal tea blend designed for relaxation and stress relief.",
-    "effects": ["relaxation", "stress relief"],
-    "ingredients": ["Chamomile", "Lavender"],
+    "category": "Tea",
     "price": 12.99,
-    "sales_data": {
-      "units_sold": 120,
-      "last_month_revenue": 1558.8
-    }
+    "image": "/images/istockphoto-597657478-612x612.jpg",
+    "ingredientIds": [1, 2, 3],
+    "effects": ["relaxation", "stress relief", "calm"]
   },
   {
     "id": 2,
-    "name": "Smartphone XYZ",
-    "type": "gadget",
-    "description": "Latest model with powerful features and an amazing camera.",
-    "effects": ["tech", "smartphone"],
-    "ingredients": ["Tech", "Display", "Camera"],
-    "price": 799.99,
-    "sales_data": {
-      "units_sold": 300,
-      "last_month_revenue": 239997.0
-    }
+    "name": "Energy Boost Tea",
+    "description": "A revitalizing tea blend for enhanced energy and focus.",
+    "category": "Tea",
+    "price": 14.99,
+    "image": "/images/Green-tea-with-lemon-photo.png",
+    "ingredientIds": [4, 5, 6],
+    "effects": ["energy", "focus", "productivity"]
+  },
+  {
+    "id": 3,
+    "name": "Herbal Infusion Tea",
+    "description": "A carefully crafted infusion of herbs to promote general wellness.",
+    "category": "Tea",
+    "price": 11.49,
+    "image": "/Users/apple/Documents/Recommendation_system/frontend/public/images/Organic_Hibiscus_Ginger_Mood.jpg.jpg",
+    "ingredientIds": [7, 8, 9],
+    "effects": ["wellness", "immune support", "relaxation"]
+  },
+  {
+    "id": 4,
+    "name": "Detox Smoothie",
+    "description": "A delicious blend of fruits and greens for natural detox.",
+    "category": "Smoothie",
+    "price": 8.99,
+    "image": "/images/istockphoto-597657478-612x612.jpg",
+    "ingredientIds": [10, 11, 12],
+    "effects": ["detox", "digestive health", "refresh"]
+  },
+  {
+    "id": 5,
+    "name": "Protein Power Shake",
+    "description": "A high-protein shake to fuel your workouts and recovery.",
+    "category": "Smoothie",
+    "price": 9.99,
+    "image": "/images/Berry-Protein-Smoothie-08-3.jpg",
+    "ingredientIds": [13, 14, 15],
+    "effects": ["protein boost", "muscle recovery", "energy"]
   }
 ]

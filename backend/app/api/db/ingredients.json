@@ -1,7 +1,92 @@
 [
   {
+    "id": 1,
     "name": "Chamomile",
-    "properties": "Mild, floral aroma; known for calming effects",
-    "common_effects": ["relaxation", "improved sleep"]
+    "description": "A gentle herb known for its calming effects.",
+    "healthBenefits": ["Stress relief", "Better sleep"]
+  },
+  {
+    "id": 2,
+    "name": "Lavender",
+    "description": "A fragrant herb used for relaxation and aromatherapy.",
+    "healthBenefits": ["Relaxation", "Reduced anxiety"]
+  },
+  {
+    "id": 3,
+    "name": "Peppermint",
+    "description": "A refreshing herb that aids in digestion.",
+    "healthBenefits": ["Digestive aid", "Stress relief"]
+  },
+  {
+    "id": 4,
+    "name": "Green Tea Leaves",
+    "description": "A natural source of caffeine and antioxidants.",
+    "healthBenefits": ["Energy boost", "Improved metabolism"]
+  },
+  {
+    "id": 5,
+    "name": "Ginseng",
+    "description": "A traditional root for boosting energy and reducing fatigue.",
+    "healthBenefits": ["Energy boost", "Mental clarity"]
+  },
+  {
+    "id": 6,
+    "name": "Lemongrass",
+    "description": "A citrusy herb for freshness and immunity.",
+    "healthBenefits": ["Immunity", "Digestive support"]
+  },
+  {
+    "id": 7,
+    "name": "Echinacea",
+    "description": "A popular herb for enhancing immune defense.",
+    "healthBenefits": ["Immunity", "Cold prevention"]
+  },
+  {
+    "id": 8,
+    "name": "Ginger Root",
+    "description": "A spicy root known for its anti-inflammatory properties.",
+    "healthBenefits": ["Anti-inflammatory", "Digestive support"]
+  },
+  {
+    "id": 9,
+    "name": "Hibiscus",
+    "description": "A vibrant flower for heart health and hydration.",
+    "healthBenefits": ["Lower blood pressure", "Hydration"]
+  },
+  {
+    "id": 10,
+    "name": "Kale",
+    "description": "A leafy green superfood rich in nutrients.",
+    "healthBenefits": ["Detoxification", "Improved digestion"]
+  },
+  {
+    "id": 11,
+    "name": "Spinach",
+    "description": "A versatile green rich in iron and vitamins.",
+    "healthBenefits": ["Iron boost", "Bone health"]
+  },
+  {
+    "id": 12,
+    "name": "Pineapple",
+    "description": "A sweet tropical fruit with digestive enzymes.",
+    "healthBenefits": ["Digestive aid", "Anti-inflammatory"]
+  },
+  {
+    "id": 13,
+    "name": "Whey Protein",
+    "description": "A complete protein for muscle repair and growth.",
+    "healthBenefits": ["Muscle growth", "Workout recovery"]
+  },
+  {
+    "id": 14,
+    "name": "Almond Milk",
+    "description": "A dairy-free alternative rich in vitamins and minerals.",
+    "healthBenefits": ["Bone health", "Low calorie"]
+  },
+  {
+    "id": 15,
+    "name": "Banana",
+    "description": "A potassium-rich fruit for sustained energy.",
+    "healthBenefits": ["Energy boost", "Heart health"]
   }
 ]
