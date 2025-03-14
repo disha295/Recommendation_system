@@ -1,29 +1,29 @@
 import React, { useState } from "react";
-import "./AskAnything.css"; // Import CSS file for styling
+import "./AskAnything.css";
 
 const AskAnything = ({ onSubmit }) => {
   const [query, setQuery] = useState("");
-  const [loading, setLoading] = useState(false); // Add loading state
+  const [loading, setLoading] = useState(false);
 
   const templateQueries = ["Best tea for relaxation?", "Energized drinks"];
 
   const handleTemplateClick = async (template) => {
     setQuery(template);
-    await handleSubmit(null, template); // Submit the template query
+    await handleSubmit(null, template);
   };
 
   const handleSubmit = async (e, template) => {
-    if (e) e.preventDefault(); // Prevent form default behavior
+    if (e) e.preventDefault();
 
-    const queryToSubmit = template || query; // Use template query or current input
+    const queryToSubmit = template || query;
     if (queryToSubmit.trim()) {
-      setLoading(true); // Show spinner
+      setLoading(true);
       try {
-        await onSubmit(queryToSubmit); // Call parent onSubmit
+        await onSubmit(queryToSubmit);
       } catch (error) {
         console.error("Error submitting query:", error);
       } finally {
-        setLoading(false); // Hide spinner
+        setLoading(false);
       }
     } else {
       alert("Please type in a query.");
@@ -38,14 +38,14 @@ const AskAnything = ({ onSubmit }) => {
       {/* Search Bar */}
       <form onSubmit={(e) => handleSubmit(e)} className="search-form">
         <div className="search-bar">
-          <i className="search-icon">🔍</i> {/* Icon inside input field */}
+          <i className="search-icon">🔍</i> {}
           <input
             type="text"
             value={query}
             onChange={(e) => setQuery(e.target.value)}
             placeholder="Ask me anything..."
             className="search-input"
-            disabled={loading} // Disable input when loading
+            disabled={loading}
           />
         </div>
       </form>
@@ -65,7 +65,7 @@ const AskAnything = ({ onSubmit }) => {
             key={index}
             onClick={() => handleTemplateClick(template)}
             className="template-button"
-            disabled={loading} // Disable buttons while loading
+            disabled={loading}
           >
             {template}
           </button>

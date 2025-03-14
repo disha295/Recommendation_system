@@ -9,17 +9,15 @@ export const getRecommendations = async (effect) => {
       }
     );
     if (Array.isArray(response.data)) {
-      // If the backend sends an array directly
-      return { recommendations: response.data }; // Wrap it in a "recommendations" object
+      return { recommendations: response.data };
     } else if (response.data && response.data.recommendations) {
-      // If the backend sends the correct structure
       return response.data;
     } else {
       console.error("Unexpected response structure:", response.data);
-      return { recommendations: [] }; // Fallback to an empty array
+      return { recommendations: [] };
     }
   } catch (error) {
     console.error("Error fetching recommendations:", error);
-    return { recommendations: [] }; // Handle errors gracefully
+    return { recommendations: [] };
   }
 };

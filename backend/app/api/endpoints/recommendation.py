@@ -13,7 +13,7 @@ OLLAMA_API_BASE = "http://localhost:11434/v1"  # Ollama's local API endpoint
 with open("backend/app/api/db/ingredients.json", "r") as file:
     ingredients_data = json.load(file)
     
-# Create a dictionary for easy lookup of ingredient names by ID
+#  A dictionary for easy lookup of ingredient names by ID
 ingredient_lookup = {ingredient["id"]: ingredient["name"] for ingredient in ingredients_data}
 
 def generate_with_llama3(product_data):
@@ -33,7 +33,7 @@ def generate_with_llama3(product_data):
         response = requests.post(
             f"{OLLAMA_API_BASE}/chat/completions",
             json={
-                "model": "llama3",  # Ensure Ollama has this model
+                "model": "llama3",  
                 "messages": [
                     {"role": "system", "content": "You are an AI that writes engaging product recommendations."},
                     {"role": "user", "content": prompt}
@@ -73,13 +73,13 @@ def rank_recommendations_by_sales(recommendations, sales_data):
     """
     Rank recommendations based on sales data.
     """
-    # Create a lookup dictionary for sales quantity
+    # A lookup dictionary for sales quantity
     sales_lookup = {sale["productId"]: sale["quantity"] for sale in sales_data}
 
-    # Add sales data to the recommendations
+    
     for product in recommendations:
         product["total_units_sold"] = sales_lookup.get(product["id"], 0)  
-    # Sort recommendations based on total units sold
+    
     return sorted(recommendations, key=lambda x: x["total_units_sold"], reverse=True)
 
 
@@ -109,22 +109,18 @@ def generate_related_keywords(query: str, product_metadata: list, model) -> list
     Generate related keywords dynamically by comparing the embedding of the user query
     with product-related metadata (e.g., effects, ingredients).
     """
-    # Generate the embedding for the user query
+    
     query_embedding = model.encode([query])[0]
     
-    # Create a list of all effects and ingredients in the product metadata
+    #  A list of all effects and ingredients in the product metadata
     all_product_data = [product["effects"] + product["ingredients"] for product in product_metadata]
-    
-    # Flatten the list of effects and ingredients to get potential "keywords"
+        
     all_keywords = [keyword for sublist in all_product_data for keyword in sublist]
-
-    # Generate embeddings for the candidate keywords (effects + ingredients from products)
+    
     keyword_embeddings = model.encode(all_keywords)
-
-    # Calculate cosine similarity between the query embedding and each keyword embedding
+    
     similarities = cosine_similarity([query_embedding], keyword_embeddings)[0]
 
-    # Find the top N related keywords based on similarity
     top_n_indices = similarities.argsort()[-5:][::-1]  # Top 5 related keywords
     related_keywords = [all_keywords[i] for i in top_n_indices]
 
@@ -136,22 +132,18 @@ def simple_semantic_search(effect: str, recommendations: list, model) -> list:
     Perform a semantic search, first checking category matches, 
     and if no match is found, falling back to related keyword-based search for effects.
     """
-    # Normalize effect to lowercase and strip extra spaces
     effect_normalized = effect.strip().lower()
 
-    # Check for category matches first
     category_matches = []
     for rec in recommendations:
         category = rec.get("category", "").strip().lower()
         if effect_normalized in category:
             category_matches.append(rec)
 
-    # If category matches are found, return them
     if category_matches:
         print(f"Found {len(category_matches)} category matches for '{effect_normalized}'.")
         return category_matches
 
-    # If no category matches, check for matches in effects
     else:
         print(f"No category matches found for '{effect_normalized}', checking effects.")
         
@@ -161,7 +153,6 @@ def simple_semantic_search(effect: str, recommendations: list, model) -> list:
 
         print(f"Related keywords for '{effect_normalized}': {related_keywords}")
 
-        # Filter recommendations based on related keywords found in the effects
         keyword_matches = [
             rec for rec in recommendations
             if any(keyword in [e.lower() for e in rec.get("effects", [])] for keyword in related_keywords)
@@ -189,21 +180,18 @@ def get_recommendations(effect: str):
         if not filtered_recommendations:
             return {"recommendations": [], "message": f"No recommendations found for '{effect}'."}
 
-        # Ensure ingredients are properly mapped
         for product in filtered_recommendations:
             product_data = {
                 "name": product["name"],
                 "description": product["description"],
-                "ingredient": product["ingredients"],  # Ensure IDs are retained if needed
+                "ingredient": product["ingredients"],  
                 "effects": product.get("effects", []),
-                "ingredients": product.get("ingredients", []),  # Include actual ingredient names
+                "ingredients": product.get("ingredients", []),  
             }
 
-            # Augment description with RAG
             product["augmented_description"] = enhance_with_rag(product_data)
             product["image"] = product.get("image", "")
 
-        # Rank recommendations based on sales data
         ranked_recommendations = rank_recommendations_by_sales(filtered_recommendations, sales_data)
 
         print(f"Ranking completed. Total execution time: {time.time() - start_time:.2f} seconds.")
@@ -211,5 +199,5 @@ def get_recommendations(effect: str):
         return {"recommendations": ranked_recommendations}
 
     except Exception as e:
-        print(f"❌ Error during recommendation process: {str(e)}")
+        print(f"Error during recommendation process: {str(e)}")
         raise HTTPException(status_code=500, detail=str(e))

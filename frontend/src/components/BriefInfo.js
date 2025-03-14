@@ -73,19 +73,19 @@ const styles = {
     fontFamily: "'Poppins', Arial, sans-serif",
     padding: "20px",
     backgroundColor: "#cbdefa",
-    minHeight: "100vh", // Ensures the container fills the viewport height
-    justifyContent: "space-between", // Distributes content evenly
+    minHeight: "100vh",
+    justifyContent: "space-between",
   },
 
   backButton: {
-    backgroundColor: "transparent", // Transparent background to remove box
-    border: "none", // Remove the border
-    color: "#007bff", // Set a color for the button (example: blue)
+    backgroundColor: "transparent",
+    border: "none",
+    color: "#007bff",
     fontSize: "1rem",
     fontWeight: "bold",
     cursor: "pointer",
-    textDecoration: "none", // Remove underlines (if it looks like a link)
-    padding: "5px 10px", // Optional for click area
+    textDecoration: "none",
+    padding: "5px 10px",
     outline: "none",
   },
   heading: {
@@ -93,11 +93,11 @@ const styles = {
     marginBottom: "20px",
   },
   container: {
-    display: "flex", // Flexbox for layout
-    flexDirection: "row", // Align cards horizontally
-    flexWrap: "wrap", // Wrap cards on smaller screens
-    justifyContent: "center", // Center the cards horizontally
-    gap: "20px", // Space between cards
+    display: "flex",
+    flexDirection: "row",
+    flexWrap: "wrap",
+    justifyContent: "center",
+    gap: "20px",
   },
   card: {
     backgroundColor: "#fff",
