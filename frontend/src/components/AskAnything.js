@@ -3,18 +3,28 @@ import "./AskAnything.css"; // Import CSS file for styling
 
 const AskAnything = ({ onSubmit }) => {
   const [query, setQuery] = useState("");
+  const [loading, setLoading] = useState(false); // Add loading state
 
   const templateQueries = ["Best tea for relaxation?", "Energized drinks"];
 
-  const handleTemplateClick = (template) => {
-    setQuery(template); // Update the query state
-    onSubmit(template); // Automatically submit the query
+  const handleTemplateClick = async (template) => {
+    setQuery(template);
+    await handleSubmit(null, template); // Submit the template query
   };
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    if (query.trim()) {
-      onSubmit(query);
+  const handleSubmit = async (e, template) => {
+    if (e) e.preventDefault(); // Prevent form default behavior
+
+    const queryToSubmit = template || query; // Use template query or current input
+    if (queryToSubmit.trim()) {
+      setLoading(true); // Show spinner
+      try {
+        await onSubmit(queryToSubmit); // Call parent onSubmit
+      } catch (error) {
+        console.error("Error submitting query:", error);
+      } finally {
+        setLoading(false); // Hide spinner
+      }
     } else {
       alert("Please type in a query.");
     }
@@ -26,7 +36,7 @@ const AskAnything = ({ onSubmit }) => {
       <h1 className="ask-title">What can I help you with?</h1>
 
       {/* Search Bar */}
-      <form onSubmit={handleSubmit} className="search-form">
+      <form onSubmit={(e) => handleSubmit(e)} className="search-form">
         <div className="search-bar">
           <i className="search-icon">🔍</i> {/* Icon inside input field */}
           <input
@@ -35,9 +45,17 @@ const AskAnything = ({ onSubmit }) => {
             onChange={(e) => setQuery(e.target.value)}
             placeholder="Ask me anything..."
             className="search-input"
+            disabled={loading} // Disable input when loading
           />
         </div>
       </form>
+
+      {/* Loading Spinner */}
+      {loading && (
+        <div className="loading-container">
+          <div className="spinner"></div>
+        </div>
+      )}
 
       {/* Template Queries */}
       <h3 className="template-title">Template Queries</h3>
@@ -47,6 +65,7 @@ const AskAnything = ({ onSubmit }) => {
             key={index}
             onClick={() => handleTemplateClick(template)}
             className="template-button"
+            disabled={loading} // Disable buttons while loading
           >
             {template}
           </button>
