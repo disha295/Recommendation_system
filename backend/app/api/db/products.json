@@ -25,7 +25,7 @@
     "description": "A carefully crafted infusion of herbs to promote general wellness.",
     "category": "Tea",
     "price": 11.49,
-    "image": "/Users/apple/Documents/Recommendation_system/frontend/public/images/Organic_Hibiscus_Ginger_Mood.jpg.jpg",
+    "image": "/images/Organic_Hibiscus_Ginger_Mood.jpg",
     "ingredientIds": [7, 8, 9],
     "effects": ["wellness", "immune support", "relaxation"]
   },
@@ -35,7 +35,7 @@
     "description": "A delicious blend of fruits and greens for natural detox.",
     "category": "Smoothie",
     "price": 8.99,
-    "image": "/images/istockphoto-597657478-612x612.jpg",
+    "image": "/images/Pineapple-Kale-Smoothie-5.jpg",
     "ingredientIds": [10, 11, 12],
     "effects": ["detox", "digestive health", "refresh"]
   },
