@@ -4,7 +4,6 @@
 
 1. **Backend Setup**:
 
-   - Navigate to the `/backend` directory.
    - Create and activate a virtual environment:
      ```
      python3 -m venv venv
@@ -16,7 +15,7 @@
      ```
    - Start the FastAPI backend:
      ```
-     uvicorn app.main:app --reload
+     uvicorn backend.app.main:app --reload
      ```
 
 2. **Frontend Setup**:
